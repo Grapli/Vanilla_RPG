@@ -1,0 +1,46 @@
+@use 'base/colors' as *;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html {
+	font-size: 62.5%;
+	height: 100%;
+}
+body {
+	font-size: 1.6rem;
+	background-image: url(/dist/img/space-big.jpg);
+	background-image: $banner-gradient, url(/dist/img/space-big.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.game-container {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+}
+
+.game-title {
+	text-align: center;
+	margin: 1.5em 0;
+	font-size: 3rem;
+	font-family: 'Varela Round', sans-serif;
+	text-transform: uppercase;
+	color: $main-color;
+}
+
+@media (min-width: 500px) {
+	.game-title {
+		font-size: 5rem;
+	}
+}
+@media (min-width: 992px) {
+	.game-title {
+		font-size: 8rem;
+	}
+}
