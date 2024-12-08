@@ -5,9 +5,9 @@ const lvlStat = document.querySelector('.lvl-stat')
 const xpStat = document.querySelector('.xp-stat')
 
 let player = {
-	hp: 350,
-	atk: 20,
-	def: 10,
+	hp: 450,
+	atk: 22,
+	def: 12,
 	lvl: 1,
 	exp: 0,
 	next: 700,
