@@ -1,0 +1,27 @@
+@use 'base/colors' as *;
+
+@media (min-width: 768px) {
+	.table {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+		&__character,
+		&__locations,
+		&__menu {
+			font-size: 2.8rem;
+		}
+        &__locations {
+            &__box{
+                &-item {
+                    font-size: 2rem;
+                }
+            }
+		}
+		&__menu {
+            &__box{
+                &-item {
+                    font-size: 2rem;
+                }
+            }
+		}
+	}
+}

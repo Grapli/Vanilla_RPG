@@ -1,29 +1,77 @@
 @use 'base/colors' as *;
+
 .table {
-	margin: 0 1em;
+	margin: 1em;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: 0.4fr 1fr;
-	border: 1px solid white;
-}
+	grid-template-columns: 1fr;
+	grid-template-rows: 0.2fr 1fr 0.5fr 0.5fr;
+	border: 1px solid $main-color;
+	height: 100%;
 
-.character {
-	grid-column: 1/-1;
-	grid-row: 1/2;
-
-
-	&__info {
-		display: flex;  height: 100%;
-		justify-content: space-evenly;
-		align-items: center;
+	&__character,
+	&__locations,
+	&__menu {
+		margin: 1em;
+	}
+	&__character {
+		color: $main-color;
 		font-weight: bold;
-		text-transform: uppercase;
-		font-size: 3rem;
-		border: 1px solid white;
-
-		&-item {
-			color: $main-color;
+		&__info {
+			list-style: none;
+			&-item {
+				display: flex;
+				justify-content: space-between;
+			}
+		}
+	}
+	&__locations {
+		color: $main-color;
+		&__title {
+			padding-bottom: 0.5em;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		&__box {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			&-item {
+				margin: 0.5em 0;
+				text-transform: uppercase;
+				padding: 0.5em 0.25em;
+				width: 100%;
+				background-color: transparent;
+				border: 1px solid $main-color;
+				color: $main-color;
+				font-weight: bold;
+				cursor: pointer;
+			}
+		}
+	}
+	&__menu {
+		color: $main-color;
+		&__title {
+			padding-bottom: 0.5em;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		&__box {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			&-item {
+				margin: 0.5em 0;
+				text-transform: uppercase;
+				padding: 0.5em 0.25em;
+				width: 100%;
+				background-color: transparent;
+				border: 1px solid $main-color;
+				color: $main-color;
+				font-weight: bold;
+				cursor: pointer;
+			}
 		}
 	}
 }
-
