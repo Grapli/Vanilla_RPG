@@ -15,7 +15,7 @@
 		&__item {
 			display: flex;
 			justify-content: space-between;
-			font-size: 2.2rem;
+			font-size: 1.8rem;
 			font-weight: bold;
 			margin: 1em;
 			text-transform: uppercase;
@@ -51,7 +51,8 @@
 		text-transform: uppercase;
 		text-decoration: none;
 		cursor: pointer;
-		font-size: 2rem;
+		font-size: 1.5rem;
+		font-weight: bold;
 		text-align: center;
 	}
 }
