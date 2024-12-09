@@ -1,8 +1,9 @@
 @use 'base/colors' as *;
 .map {
+	margin: 1em;
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-template-rows: repeat(5, 1fr);
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-rows: repeat(6, 1fr);
   
     
 }
@@ -13,4 +14,5 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border: 1px solid black;
 }

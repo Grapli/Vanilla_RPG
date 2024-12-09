@@ -19,7 +19,7 @@ const hyperion = {
 	},
 }
 const nomedia = {
-	soldier: {
+	scout: {
 		hp: 160,
 		atk: 15,
 		def: 12,
@@ -31,9 +31,9 @@ const nomedia = {
 		def: 5,
 		exp: 200,
 	},
-	knight: {
+	soldier: {
 		hp: 250,
-		atk: 35,
+		atk: 25,
 		def: 10,
 		exp: 400,
 	},
