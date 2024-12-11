@@ -4,8 +4,6 @@
 	display: grid;
 	grid-template-columns: repeat(8, 1fr);
 	grid-template-rows: repeat(6, 1fr);
-  
-    
 }
 .map-tile {
 	width: 100%;
@@ -15,4 +13,30 @@
 	align-items: center;
 	justify-content: center;
 	border: 1px solid black;
+}
+
+.player {
+	background-color: blue;
+	border-radius: 50%;
+	// font-size: 3rem;
+}
+.enemy {
+	background-color: red;
+	border-radius: 50%;
+}
+@media( min-width:5768px){
+	.player{
+		font-size: 2rem;
+	}
+}
+
+@media( min-width:768px){
+	.player{
+		font-size: 3rem;
+	}
+}
+@media( min-width:1200px){
+	.player{
+		font-size: 4rem;
+	}
 }
