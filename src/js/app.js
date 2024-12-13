@@ -18,11 +18,10 @@ let player = {
 const mapSize = 48
 const mapElement = document.querySelector('.map')
 const playerStartPosition = Math.floor(Math.random() * mapSize)
-
+const enemyStartPosition = Math.floor(Math.random() * mapSize)
 //Przyciski
 const hyperionTravelBtn = document.querySelector('#hyperion-travel')
 const NomediaTravelBtn = document.querySelector('#nomedia-travel')
-
 
 function generateMap() {
 	mapElement.innerHTML = '' // Wyczyść mapę
@@ -32,30 +31,18 @@ function generateMap() {
 
 		if (i === playerStartPosition) {
 			mapTile.classList.add('player')
-			mapTile.innerText = '🧑‍🚀' 
+			mapTile.innerText = '🧑‍🚀'
+		}
+		for (let count = 0; count < 3; count++) {
+			if (i === enemyStartPosition) {
+				mapTile.classList.add('enemy')
+				mapTile.innerText = '🤖'
+				
+			}
 		}
 		mapElement.append(mapTile)
 	}
 }
-
-const generatePlayer = () => {
-	const playerPosition = Math.floor(Math.random() * mapSize)
-	console.log(playerPosition)
-
-	for (let i = 0; i < mapSize; i++) {
-		const mapTile = document.createElement('div')
-		mapTile.className = 'map-tile'
-	}
-
-	if (i === playerPosition) {
-		mapTileclassList.add('player')
-		mapTile.textContent = '🧑‍🚀'
-		mapTile = player
-	}
-}
-
-const generateEnemies = () => {}
-
 const UpgradeStats = () => {
 	maxHpStat.textContent = player.maxHp
 	hpStat.textContent = player.hp
