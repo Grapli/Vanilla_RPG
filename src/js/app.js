@@ -17,18 +17,18 @@ let player = {
 // Parametry mapy
 const mapSize = 48
 const mapElement = document.querySelector('.map')
-const playerStartPosition = Math.floor(Math.random() * mapSize)
-const enemyStartPosition = Math.floor(Math.random() * mapSize)
+let playerStartPosition = Math.floor(Math.random() * mapSize)
+let enemyStartPosition = Math.floor(Math.random() * mapSize)
 //Przyciski
 const hyperionTravelBtn = document.querySelector('#hyperion-travel')
-const NomediaTravelBtn = document.querySelector('#nomedia-travel')
+const nomediaTravelBtn = document.querySelector('#nomedia-travel')
+const genaoTravelBtn = document.querySelector('#genao-travel')
 
 function generateMap() {
-	mapElement.innerHTML = '' // Wyczyść mapę
+	clearMap()
 	for (let i = 0; i < mapSize; i++) {
 		const mapTile = document.createElement('div')
 		mapTile.className = 'map-tile'
-
 		if (i === playerStartPosition) {
 			mapTile.classList.add('player')
 			mapTile.innerText = '🧑‍🚀'
@@ -37,12 +37,26 @@ function generateMap() {
 			if (i === enemyStartPosition) {
 				mapTile.classList.add('enemy')
 				mapTile.innerText = '🤖'
-				
 			}
 		}
 		mapElement.append(mapTile)
 	}
 }
+const clearMap = () => {
+	if (mapElement) {
+		mapElement.innerHTML = ''
+	}
+}
+
+// const createMap = () => {
+// 	for (let i = 0; i < mapSize; i++) {
+// 		const mapTile = document.createElement('div')
+// 		mapTile.className = 'map-tile'
+// 	}
+// }
+// const generatePlayerPosition = () => {}
+// const generateEnemyPosition = () => {}
+
 const UpgradeStats = () => {
 	maxHpStat.textContent = player.maxHp
 	hpStat.textContent = player.hp
@@ -54,4 +68,4 @@ const UpgradeStats = () => {
 
 UpgradeStats()
 hyperionTravelBtn.addEventListener('click', generateMap)
-NomediaTravelBtn.addEventListener('click', generateMap)
+nomediaTravelBtn.addEventListener('click', generateMap)
