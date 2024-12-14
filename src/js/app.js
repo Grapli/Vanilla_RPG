@@ -17,8 +17,7 @@ let player = {
 // Parametry mapy
 const mapSize = 48
 const mapElement = document.querySelector('.map')
-const mapBlocks = []
-const enemyCount = 8
+const enemyCount = 12
 //Przyciski
 const hyperionTravelBtn = document.querySelector('#hyperion-travel')
 const nomediaTravelBtn = document.querySelector('#nomedia-travel')
@@ -33,7 +32,7 @@ const createMap = () => {
 		mapElement.append(mapBlock)
 	}
 }
-//Funkcja do losowania unikajln
+//FUNKCJA POMOCNICZA: funkcja generująca losowe pozycje
 const getRandomPositions = (count, max) => {
 	const positions = new Set()
 	while (positions.size < count) {
@@ -43,23 +42,24 @@ const getRandomPositions = (count, max) => {
 }
 // Funkcja do rozmieszczania gracza i wrogów
 const placeCharacters = () => {
-	const blocks = Array.from(document.querySelectorAll('.map-block'))
+	const mapBlocks = Array.from(document.querySelectorAll('.map-block'))
 	const positions = getRandomPositions(enemyCount + 1, mapSize)
 
 	//Gracz
 	const playerPosition = positions[0]
-	blocks[playerPosition].innerHTML = '<div class="player">🧑‍🚀</div>'
+	mapBlocks[playerPosition].innerHTML = '<div id="player" class="player">🧑‍🚀</div>'
 	//Wrogowie
-	positions.slice(1).forEach(pos => {
-		blocks[pos].innerHTML = '<div class="enemy">🤖</div>'
+	positions.slice(1).forEach((enemies, index) => {
+		mapBlocks[enemies].innerHTML = `<div id="enemy-${index + 1}" class="enemy">🤖</div>`
 	})
 }
 
+//Funkcja generująca mape
 const generateMap = () => {
 	createMap()
 	placeCharacters()
 }
-
+//Funkcja pokazująca statystyki gracza w UI 
 const ShowMenuStats = () => {
 	maxHpStat.textContent = player.maxHp
 	hpStat.textContent = player.hp
@@ -68,6 +68,17 @@ const ShowMenuStats = () => {
 	lvlStat.textContent = player.lvl
 	xpStat.textContent = player.next
 }
+
+
+
+
+
+
+
+
+
+
+
 
 ShowMenuStats()
 hyperionTravelBtn.addEventListener('click', generateMap)
