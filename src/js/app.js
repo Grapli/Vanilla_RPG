@@ -17,33 +17,50 @@ let player = {
 // Parametry mapy
 const mapSize = 48
 const mapElement = document.querySelector('.map')
-const playerStartPosition = Math.floor(Math.random() * mapSize)
-const enemyStartPosition = Math.floor(Math.random() * mapSize)
+const mapBlocks = []
+const enemyCount = 8
 //Przyciski
 const hyperionTravelBtn = document.querySelector('#hyperion-travel')
-const NomediaTravelBtn = document.querySelector('#nomedia-travel')
-
-function generateMap() {
-	mapElement.innerHTML = '' // Wyczyść mapę
+const nomediaTravelBtn = document.querySelector('#nomedia-travel')
+const genaoTravelBtn = document.querySelector('#genao-travel')
+// Funkcja do tworzenia mapy
+const createMap = () => {
+	mapElement.innerHTML = ''
 	for (let i = 0; i < mapSize; i++) {
-		const mapTile = document.createElement('div')
-		mapTile.className = 'map-tile'
-
-		if (i === playerStartPosition) {
-			mapTile.classList.add('player')
-			mapTile.innerText = '🧑‍🚀'
-		}
-		for (let count = 0; count < 3; count++) {
-			if (i === enemyStartPosition) {
-				mapTile.classList.add('enemy')
-				mapTile.innerText = '🤖'
-				
-			}
-		}
-		mapElement.append(mapTile)
+		const mapBlock = document.createElement('div')
+		mapBlock.className = 'map-block'
+		mapBlock.setAttribute('data-index', i)
+		mapElement.append(mapBlock)
 	}
 }
-const UpgradeStats = () => {
+//Funkcja do losowania unikajln
+const getRandomPositions = (count, max) => {
+	const positions = new Set()
+	while (positions.size < count) {
+		positions.add(Math.floor(Math.random() * max))
+	}
+	return Array.from(positions)
+}
+// Funkcja do rozmieszczania gracza i wrogów
+const placeCharacters = () => {
+	const blocks = Array.from(document.querySelectorAll('.map-block'))
+	const positions = getRandomPositions(enemyCount + 1, mapSize)
+
+	//Gracz
+	const playerPosition = positions[0]
+	blocks[playerPosition].innerHTML = '<div class="player">🧑‍🚀</div>'
+	//Wrogowie
+	positions.slice(1).forEach(pos => {
+		blocks[pos].innerHTML = '<div class="enemy">🤖</div>'
+	})
+}
+
+const generateMap = () => {
+	createMap()
+	placeCharacters()
+}
+
+const ShowMenuStats = () => {
 	maxHpStat.textContent = player.maxHp
 	hpStat.textContent = player.hp
 	atkStat.textContent = player.atk
@@ -54,4 +71,5 @@ const UpgradeStats = () => {
 
 ShowMenuStats()
 hyperionTravelBtn.addEventListener('click', generateMap)
-NomediaTravelBtn.addEventListener('click', generateMap)
+nomediaTravelBtn.addEventListener('click', generateMap)
+genaoTravelBtn.addEventListener('click', generateMap)
